@@ -1,0 +1,28 @@
+{
+  "name": "union-voting",
+  "version": "1.0.0",
+  "description": "MySQL shell, server and database to handle CRUD operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreBlankholm/Union-Voting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreBlankholm/Union-Voting/issues"
+  },
+  "homepage": "https://github.com/AndreBlankholm/Union-Voting#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}

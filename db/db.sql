@@ -1,2 +1,3 @@
+
 CREATE DATABASE elections;
-USE election;
+USE elections;
