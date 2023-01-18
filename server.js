@@ -23,14 +23,51 @@ const db = mysql.createConnection(
   console.log("Connected to the elections database.")
 );
 
+// Create a candidate
+const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected) 
+              VALUES (?,?,?,?)`;
+const params = [1, 'Andre', 'Blankholm', 1];
 
-db.query(`Select * FROM candidates`, (err, rows) => {  // inital mysql connection check in commandline
-    console.log(rows);
-})
-// Default response for any other request (Not Found) intial connection check in http://localhost:3001/ 
-app.use((req, res) => {
-  res.status(404).end();
+db.query(sql, params, (err, result) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(result);
 });
+
+// select all from 
+// db.query(`Select * FROM candidates`, (err, rows) => {  // inital mysql connection check in commandline
+//     console.log(rows);
+// });
+
+// select one from
+// db.query(`SELECT * FROM candidates WHERE id = 2`, (err, row) => {
+//     if(err){
+//         console.log(err);
+//     } 
+//     console.log(row);
+// });
+
+// Delete a candidate
+// db.query(`DELETE FROM candidates WHERE id = ?`, 1, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
+
+app.get('/', (req, res) => {
+    res.json({
+      message: 'Hello World'
+    });
+  });
+
+// Default response for any other request (Not Found) or not supported by the app 
+app.use((req, res) => {
+    res.status(404).end();
+  });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
