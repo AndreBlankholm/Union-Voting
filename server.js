@@ -38,6 +38,7 @@ const db = mysql.createConnection(
 // Create a candidate
 app.post('/api/candidate', ({ body }, res) => {
     const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected'); // pulling the body out and checking to make sure it has these params only
+    
     if (errors) {
       res.status(400).json({ error: errors });  
       return;
