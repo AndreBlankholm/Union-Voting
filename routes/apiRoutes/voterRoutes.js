@@ -119,16 +119,16 @@ router.get("/votes", (req, res) => {
   LEFT JOIN candidates ON votes.candidate_id = candidates.id
   LEFT JOIN parties ON candidates.party_id = parties.id
   GROUP BY candidate_id ORDER BY count DESC;`; // gets by last_name /if you want descending order than use ORDER BY last_name DESC
+  const params = [req.params.id];
 
-  
-  db.query(sql, params, (err, rows) => {
+  db.query(sql, params, (err, row) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
     res.json({
       message: "success",
-      data: rows,
+      data: row,
     });
   });
 });
